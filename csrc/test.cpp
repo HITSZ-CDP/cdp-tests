@@ -74,6 +74,7 @@ int main(int argc, char** argv, char** env) {
             }
         }
     }
+    printf("Timed out! Please check whether your CPU got stuck.\n");
 	delete top;
 	return 0;
 }
