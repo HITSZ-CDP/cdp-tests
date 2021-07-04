@@ -5,12 +5,12 @@ simple:     file format elf32-littleriscv
 Disassembly of section .text.init:
 
 00000000 <_start>:
-   0:	0040006f          	jal	zero,4 <reset_vector>
+   0:	0040006f          	jal	x0,4 <reset_vector>
 
 00000004 <reset_vector>:
-   4:	00100193          	addi	gp,zero,1
-   8:	05d00893          	addi	a7,zero,93
-   c:	00000513          	addi	a0,zero,0
+   4:	00100193          	addi	x3,x0,1
+   8:	05d00893          	addi	x17,x0,93
+   c:	00000513          	addi	x10,x0,0
   10:	00000073          	ecall
   14:	c0001073          	unimp
   18:	0000                	c.unimp
