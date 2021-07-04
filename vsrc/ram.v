@@ -1,10 +1,10 @@
 `define STRINGIFY(x) `"x`"
 
-module inst_ram # (
+module inst_mem # (
     ADDR_BITS = 16
 )
 (
-	input [ADDR_BITS - 1:0] addr,
+	input [ADDR_BITS - 1:0] a,
     output [31:0] spo
 );
 
@@ -37,7 +37,7 @@ assign spo = mem[a];
 
 endmodule
 
-module data_ram # (
+module data_mem # (
     ADDR_BITS = 16
 )
 (
