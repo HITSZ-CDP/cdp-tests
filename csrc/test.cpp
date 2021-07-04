@@ -17,11 +17,11 @@ double sc_time_stamp() {
 }
 void reset_all(){
 	printf("[mycpu] Resetting ...\n");
-	top_module -> rst = 1;
+	top_module -> rst_n = 0;
 	for(int i = 0; i<20; i++) {
 		top -> tick();
 	}
-	top_module -> rst = 0;
+	top_module -> rst_n = 1;
 	printf("[mycpu] Reset done.\n");
 }
 
