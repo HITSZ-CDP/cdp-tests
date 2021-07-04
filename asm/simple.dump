@@ -5,33 +5,33 @@ simple:     file format elf32-littleriscv
 Disassembly of section .text.init:
 
 00000000 <_start>:
-   0:	0040006f          	j	4 <reset_vector>
+   0:	0040006f          	jal	zero,4 <reset_vector>
 
 00000004 <reset_vector>:
-   4:	00100193          	li	gp,1
-   8:	05d00893          	li	a7,93
-   c:	00000513          	li	a0,0
+   4:	00100193          	addi	gp,zero,1
+   8:	05d00893          	addi	a7,zero,93
+   c:	00000513          	addi	a0,zero,0
   10:	00000073          	ecall
   14:	c0001073          	unimp
-  18:	0000                	unimp
-  1a:	0000                	unimp
-  1c:	0000                	unimp
-  1e:	0000                	unimp
-  20:	0000                	unimp
-  22:	0000                	unimp
-  24:	0000                	unimp
-  26:	0000                	unimp
-  28:	0000                	unimp
-  2a:	0000                	unimp
-  2c:	0000                	unimp
-  2e:	0000                	unimp
-  30:	0000                	unimp
-  32:	0000                	unimp
-  34:	0000                	unimp
-  36:	0000                	unimp
-  38:	0000                	unimp
-  3a:	0000                	unimp
-  3c:	0000                	unimp
-  3e:	0000                	unimp
-  40:	0000                	unimp
-  42:	0000                	unimp
+  18:	0000                	c.unimp
+  1a:	0000                	c.unimp
+  1c:	0000                	c.unimp
+  1e:	0000                	c.unimp
+  20:	0000                	c.unimp
+  22:	0000                	c.unimp
+  24:	0000                	c.unimp
+  26:	0000                	c.unimp
+  28:	0000                	c.unimp
+  2a:	0000                	c.unimp
+  2c:	0000                	c.unimp
+  2e:	0000                	c.unimp
+  30:	0000                	c.unimp
+  32:	0000                	c.unimp
+  34:	0000                	c.unimp
+  36:	0000                	c.unimp
+  38:	0000                	c.unimp
+  3a:	0000                	c.unimp
+  3c:	0000                	c.unimp
+  3e:	0000                	c.unimp
+  40:	0000                	c.unimp
+  42:	0000                	c.unimp

@@ -5,12 +5,12 @@ bgeu:     file format elf32-littleriscv
 Disassembly of section .text.init:
 
 00000000 <_start>:
-   0:	0040006f          	j	4 <reset_vector>
+   0:	0040006f          	jal	zero,4 <reset_vector>
 
 00000004 <reset_vector>:
-   4:	00200193          	li	gp,2
-   8:	00000093          	li	ra,0
-   c:	00000113          	li	sp,0
+   4:	00200193          	addi	gp,zero,2
+   8:	00000093          	addi	ra,zero,0
+   c:	00000113          	addi	sp,zero,0
   10:	0020f663          	bgeu	ra,sp,1c <reset_vector+0x18>
   14:	34301263          	bne	zero,gp,358 <fail>
   18:	00301663          	bne	zero,gp,24 <test_3>
@@ -18,9 +18,9 @@ Disassembly of section .text.init:
   20:	32301c63          	bne	zero,gp,358 <fail>
 
 00000024 <test_3>:
-  24:	00300193          	li	gp,3
-  28:	00100093          	li	ra,1
-  2c:	00100113          	li	sp,1
+  24:	00300193          	addi	gp,zero,3
+  28:	00100093          	addi	ra,zero,1
+  2c:	00100113          	addi	sp,zero,1
   30:	0020f663          	bgeu	ra,sp,3c <test_3+0x18>
   34:	32301263          	bne	zero,gp,358 <fail>
   38:	00301663          	bne	zero,gp,44 <test_4>
@@ -28,9 +28,9 @@ Disassembly of section .text.init:
   40:	30301c63          	bne	zero,gp,358 <fail>
 
 00000044 <test_4>:
-  44:	00400193          	li	gp,4
-  48:	fff00093          	li	ra,-1
-  4c:	fff00113          	li	sp,-1
+  44:	00400193          	addi	gp,zero,4
+  48:	fff00093          	addi	ra,zero,-1
+  4c:	fff00113          	addi	sp,zero,-1
   50:	0020f663          	bgeu	ra,sp,5c <test_4+0x18>
   54:	30301263          	bne	zero,gp,358 <fail>
   58:	00301663          	bne	zero,gp,64 <test_5>
@@ -38,9 +38,9 @@ Disassembly of section .text.init:
   60:	2e301c63          	bne	zero,gp,358 <fail>
 
 00000064 <test_5>:
-  64:	00500193          	li	gp,5
-  68:	00100093          	li	ra,1
-  6c:	00000113          	li	sp,0
+  64:	00500193          	addi	gp,zero,5
+  68:	00100093          	addi	ra,zero,1
+  6c:	00000113          	addi	sp,zero,0
   70:	0020f663          	bgeu	ra,sp,7c <test_5+0x18>
   74:	2e301263          	bne	zero,gp,358 <fail>
   78:	00301663          	bne	zero,gp,84 <test_6>
@@ -48,9 +48,9 @@ Disassembly of section .text.init:
   80:	2c301c63          	bne	zero,gp,358 <fail>
 
 00000084 <test_6>:
-  84:	00600193          	li	gp,6
-  88:	fff00093          	li	ra,-1
-  8c:	ffe00113          	li	sp,-2
+  84:	00600193          	addi	gp,zero,6
+  88:	fff00093          	addi	ra,zero,-1
+  8c:	ffe00113          	addi	sp,zero,-2
   90:	0020f663          	bgeu	ra,sp,9c <test_6+0x18>
   94:	2c301263          	bne	zero,gp,358 <fail>
   98:	00301663          	bne	zero,gp,a4 <test_7>
@@ -58,9 +58,9 @@ Disassembly of section .text.init:
   a0:	2a301c63          	bne	zero,gp,358 <fail>
 
 000000a4 <test_7>:
-  a4:	00700193          	li	gp,7
-  a8:	fff00093          	li	ra,-1
-  ac:	00000113          	li	sp,0
+  a4:	00700193          	addi	gp,zero,7
+  a8:	fff00093          	addi	ra,zero,-1
+  ac:	00000113          	addi	sp,zero,0
   b0:	0020f663          	bgeu	ra,sp,bc <test_7+0x18>
   b4:	2a301263          	bne	zero,gp,358 <fail>
   b8:	00301663          	bne	zero,gp,c4 <test_8>
@@ -68,34 +68,34 @@ Disassembly of section .text.init:
   c0:	28301c63          	bne	zero,gp,358 <fail>
 
 000000c4 <test_8>:
-  c4:	00800193          	li	gp,8
-  c8:	00000093          	li	ra,0
-  cc:	00100113          	li	sp,1
+  c4:	00800193          	addi	gp,zero,8
+  c8:	00000093          	addi	ra,zero,0
+  cc:	00100113          	addi	sp,zero,1
   d0:	0020f463          	bgeu	ra,sp,d8 <test_8+0x14>
   d4:	00301463          	bne	zero,gp,dc <test_8+0x18>
   d8:	28301063          	bne	zero,gp,358 <fail>
   dc:	fe20fee3          	bgeu	ra,sp,d8 <test_8+0x14>
 
 000000e0 <test_9>:
-  e0:	00900193          	li	gp,9
-  e4:	ffe00093          	li	ra,-2
-  e8:	fff00113          	li	sp,-1
+  e0:	00900193          	addi	gp,zero,9
+  e4:	ffe00093          	addi	ra,zero,-2
+  e8:	fff00113          	addi	sp,zero,-1
   ec:	0020f463          	bgeu	ra,sp,f4 <test_9+0x14>
   f0:	00301463          	bne	zero,gp,f8 <test_9+0x18>
   f4:	26301263          	bne	zero,gp,358 <fail>
   f8:	fe20fee3          	bgeu	ra,sp,f4 <test_9+0x14>
 
 000000fc <test_10>:
-  fc:	00a00193          	li	gp,10
- 100:	00000093          	li	ra,0
- 104:	fff00113          	li	sp,-1
+  fc:	00a00193          	addi	gp,zero,10
+ 100:	00000093          	addi	ra,zero,0
+ 104:	fff00113          	addi	sp,zero,-1
  108:	0020f463          	bgeu	ra,sp,110 <test_10+0x14>
  10c:	00301463          	bne	zero,gp,114 <test_10+0x18>
  110:	24301463          	bne	zero,gp,358 <fail>
  114:	fe20fee3          	bgeu	ra,sp,110 <test_10+0x14>
 
 00000118 <test_11>:
- 118:	00b00193          	li	gp,11
+ 118:	00b00193          	addi	gp,zero,11
  11c:	800000b7          	lui	ra,0x80000
  120:	fff08093          	addi	ra,ra,-1 # 7fffffff <_end+0x7fffdfff>
  124:	80000137          	lui	sp,0x80000
@@ -105,155 +105,155 @@ Disassembly of section .text.init:
  134:	fe20fee3          	bgeu	ra,sp,130 <test_11+0x18>
 
 00000138 <test_12>:
- 138:	00c00193          	li	gp,12
- 13c:	00000213          	li	tp,0
+ 138:	00c00193          	addi	gp,zero,12
+ 13c:	00000213          	addi	tp,zero,0
  140:	f00000b7          	lui	ra,0xf0000
  144:	fff08093          	addi	ra,ra,-1 # efffffff <_end+0xefffdfff>
  148:	f0000137          	lui	sp,0xf0000
  14c:	2020f663          	bgeu	ra,sp,358 <fail>
  150:	00120213          	addi	tp,tp,1 # 1 <_start+0x1>
- 154:	00200293          	li	t0,2
+ 154:	00200293          	addi	t0,zero,2
  158:	fe5214e3          	bne	tp,t0,140 <test_12+0x8>
 
 0000015c <test_13>:
- 15c:	00d00193          	li	gp,13
- 160:	00000213          	li	tp,0
+ 15c:	00d00193          	addi	gp,zero,13
+ 160:	00000213          	addi	tp,zero,0
  164:	f00000b7          	lui	ra,0xf0000
  168:	fff08093          	addi	ra,ra,-1 # efffffff <_end+0xefffdfff>
  16c:	f0000137          	lui	sp,0xf0000
- 170:	00000013          	nop
+ 170:	00000013          	addi	zero,zero,0
  174:	1e20f263          	bgeu	ra,sp,358 <fail>
  178:	00120213          	addi	tp,tp,1 # 1 <_start+0x1>
- 17c:	00200293          	li	t0,2
+ 17c:	00200293          	addi	t0,zero,2
  180:	fe5212e3          	bne	tp,t0,164 <test_13+0x8>
 
 00000184 <test_14>:
- 184:	00e00193          	li	gp,14
- 188:	00000213          	li	tp,0
+ 184:	00e00193          	addi	gp,zero,14
+ 188:	00000213          	addi	tp,zero,0
  18c:	f00000b7          	lui	ra,0xf0000
  190:	fff08093          	addi	ra,ra,-1 # efffffff <_end+0xefffdfff>
  194:	f0000137          	lui	sp,0xf0000
- 198:	00000013          	nop
- 19c:	00000013          	nop
+ 198:	00000013          	addi	zero,zero,0
+ 19c:	00000013          	addi	zero,zero,0
  1a0:	1a20fc63          	bgeu	ra,sp,358 <fail>
  1a4:	00120213          	addi	tp,tp,1 # 1 <_start+0x1>
- 1a8:	00200293          	li	t0,2
+ 1a8:	00200293          	addi	t0,zero,2
  1ac:	fe5210e3          	bne	tp,t0,18c <test_14+0x8>
 
 000001b0 <test_15>:
- 1b0:	00f00193          	li	gp,15
- 1b4:	00000213          	li	tp,0
+ 1b0:	00f00193          	addi	gp,zero,15
+ 1b4:	00000213          	addi	tp,zero,0
  1b8:	f00000b7          	lui	ra,0xf0000
  1bc:	fff08093          	addi	ra,ra,-1 # efffffff <_end+0xefffdfff>
- 1c0:	00000013          	nop
+ 1c0:	00000013          	addi	zero,zero,0
  1c4:	f0000137          	lui	sp,0xf0000
  1c8:	1820f863          	bgeu	ra,sp,358 <fail>
  1cc:	00120213          	addi	tp,tp,1 # 1 <_start+0x1>
- 1d0:	00200293          	li	t0,2
+ 1d0:	00200293          	addi	t0,zero,2
  1d4:	fe5212e3          	bne	tp,t0,1b8 <test_15+0x8>
 
 000001d8 <test_16>:
- 1d8:	01000193          	li	gp,16
- 1dc:	00000213          	li	tp,0
+ 1d8:	01000193          	addi	gp,zero,16
+ 1dc:	00000213          	addi	tp,zero,0
  1e0:	f00000b7          	lui	ra,0xf0000
  1e4:	fff08093          	addi	ra,ra,-1 # efffffff <_end+0xefffdfff>
- 1e8:	00000013          	nop
+ 1e8:	00000013          	addi	zero,zero,0
  1ec:	f0000137          	lui	sp,0xf0000
- 1f0:	00000013          	nop
+ 1f0:	00000013          	addi	zero,zero,0
  1f4:	1620f263          	bgeu	ra,sp,358 <fail>
  1f8:	00120213          	addi	tp,tp,1 # 1 <_start+0x1>
- 1fc:	00200293          	li	t0,2
+ 1fc:	00200293          	addi	t0,zero,2
  200:	fe5210e3          	bne	tp,t0,1e0 <test_16+0x8>
 
 00000204 <test_17>:
- 204:	01100193          	li	gp,17
- 208:	00000213          	li	tp,0
+ 204:	01100193          	addi	gp,zero,17
+ 208:	00000213          	addi	tp,zero,0
  20c:	f00000b7          	lui	ra,0xf0000
  210:	fff08093          	addi	ra,ra,-1 # efffffff <_end+0xefffdfff>
- 214:	00000013          	nop
- 218:	00000013          	nop
+ 214:	00000013          	addi	zero,zero,0
+ 218:	00000013          	addi	zero,zero,0
  21c:	f0000137          	lui	sp,0xf0000
  220:	1220fc63          	bgeu	ra,sp,358 <fail>
  224:	00120213          	addi	tp,tp,1 # 1 <_start+0x1>
- 228:	00200293          	li	t0,2
+ 228:	00200293          	addi	t0,zero,2
  22c:	fe5210e3          	bne	tp,t0,20c <test_17+0x8>
 
 00000230 <test_18>:
- 230:	01200193          	li	gp,18
- 234:	00000213          	li	tp,0
+ 230:	01200193          	addi	gp,zero,18
+ 234:	00000213          	addi	tp,zero,0
  238:	f00000b7          	lui	ra,0xf0000
  23c:	fff08093          	addi	ra,ra,-1 # efffffff <_end+0xefffdfff>
  240:	f0000137          	lui	sp,0xf0000
  244:	1020fa63          	bgeu	ra,sp,358 <fail>
  248:	00120213          	addi	tp,tp,1 # 1 <_start+0x1>
- 24c:	00200293          	li	t0,2
+ 24c:	00200293          	addi	t0,zero,2
  250:	fe5214e3          	bne	tp,t0,238 <test_18+0x8>
 
 00000254 <test_19>:
- 254:	01300193          	li	gp,19
- 258:	00000213          	li	tp,0
+ 254:	01300193          	addi	gp,zero,19
+ 258:	00000213          	addi	tp,zero,0
  25c:	f00000b7          	lui	ra,0xf0000
  260:	fff08093          	addi	ra,ra,-1 # efffffff <_end+0xefffdfff>
  264:	f0000137          	lui	sp,0xf0000
- 268:	00000013          	nop
+ 268:	00000013          	addi	zero,zero,0
  26c:	0e20f663          	bgeu	ra,sp,358 <fail>
  270:	00120213          	addi	tp,tp,1 # 1 <_start+0x1>
- 274:	00200293          	li	t0,2
+ 274:	00200293          	addi	t0,zero,2
  278:	fe5212e3          	bne	tp,t0,25c <test_19+0x8>
 
 0000027c <test_20>:
- 27c:	01400193          	li	gp,20
- 280:	00000213          	li	tp,0
+ 27c:	01400193          	addi	gp,zero,20
+ 280:	00000213          	addi	tp,zero,0
  284:	f00000b7          	lui	ra,0xf0000
  288:	fff08093          	addi	ra,ra,-1 # efffffff <_end+0xefffdfff>
  28c:	f0000137          	lui	sp,0xf0000
- 290:	00000013          	nop
- 294:	00000013          	nop
+ 290:	00000013          	addi	zero,zero,0
+ 294:	00000013          	addi	zero,zero,0
  298:	0c20f063          	bgeu	ra,sp,358 <fail>
  29c:	00120213          	addi	tp,tp,1 # 1 <_start+0x1>
- 2a0:	00200293          	li	t0,2
+ 2a0:	00200293          	addi	t0,zero,2
  2a4:	fe5210e3          	bne	tp,t0,284 <test_20+0x8>
 
 000002a8 <test_21>:
- 2a8:	01500193          	li	gp,21
- 2ac:	00000213          	li	tp,0
+ 2a8:	01500193          	addi	gp,zero,21
+ 2ac:	00000213          	addi	tp,zero,0
  2b0:	f00000b7          	lui	ra,0xf0000
  2b4:	fff08093          	addi	ra,ra,-1 # efffffff <_end+0xefffdfff>
- 2b8:	00000013          	nop
+ 2b8:	00000013          	addi	zero,zero,0
  2bc:	f0000137          	lui	sp,0xf0000
  2c0:	0820fc63          	bgeu	ra,sp,358 <fail>
  2c4:	00120213          	addi	tp,tp,1 # 1 <_start+0x1>
- 2c8:	00200293          	li	t0,2
+ 2c8:	00200293          	addi	t0,zero,2
  2cc:	fe5212e3          	bne	tp,t0,2b0 <test_21+0x8>
 
 000002d0 <test_22>:
- 2d0:	01600193          	li	gp,22
- 2d4:	00000213          	li	tp,0
+ 2d0:	01600193          	addi	gp,zero,22
+ 2d4:	00000213          	addi	tp,zero,0
  2d8:	f00000b7          	lui	ra,0xf0000
  2dc:	fff08093          	addi	ra,ra,-1 # efffffff <_end+0xefffdfff>
- 2e0:	00000013          	nop
+ 2e0:	00000013          	addi	zero,zero,0
  2e4:	f0000137          	lui	sp,0xf0000
- 2e8:	00000013          	nop
+ 2e8:	00000013          	addi	zero,zero,0
  2ec:	0620f663          	bgeu	ra,sp,358 <fail>
  2f0:	00120213          	addi	tp,tp,1 # 1 <_start+0x1>
- 2f4:	00200293          	li	t0,2
+ 2f4:	00200293          	addi	t0,zero,2
  2f8:	fe5210e3          	bne	tp,t0,2d8 <test_22+0x8>
 
 000002fc <test_23>:
- 2fc:	01700193          	li	gp,23
- 300:	00000213          	li	tp,0
+ 2fc:	01700193          	addi	gp,zero,23
+ 300:	00000213          	addi	tp,zero,0
  304:	f00000b7          	lui	ra,0xf0000
  308:	fff08093          	addi	ra,ra,-1 # efffffff <_end+0xefffdfff>
- 30c:	00000013          	nop
- 310:	00000013          	nop
+ 30c:	00000013          	addi	zero,zero,0
+ 310:	00000013          	addi	zero,zero,0
  314:	f0000137          	lui	sp,0xf0000
  318:	0420f063          	bgeu	ra,sp,358 <fail>
  31c:	00120213          	addi	tp,tp,1 # 1 <_start+0x1>
- 320:	00200293          	li	t0,2
+ 320:	00200293          	addi	t0,zero,2
  324:	fe5210e3          	bne	tp,t0,304 <test_23+0x8>
 
 00000328 <test_24>:
- 328:	00100093          	li	ra,1
+ 328:	00100093          	addi	ra,zero,1
  32c:	0000fa63          	bgeu	ra,zero,340 <test_24+0x18>
  330:	00108093          	addi	ra,ra,1
  334:	00108093          	addi	ra,ra,1
@@ -261,22 +261,22 @@ Disassembly of section .text.init:
  33c:	00108093          	addi	ra,ra,1
  340:	00108093          	addi	ra,ra,1
  344:	00108093          	addi	ra,ra,1
- 348:	00300393          	li	t2,3
- 34c:	01800193          	li	gp,24
+ 348:	00300393          	addi	t2,zero,3
+ 34c:	01800193          	addi	gp,zero,24
  350:	00709463          	bne	ra,t2,358 <fail>
  354:	00301e63          	bne	zero,gp,370 <pass>
 
 00000358 <fail>:
- 358:	00018063          	beqz	gp,358 <fail>
+ 358:	00018063          	beq	gp,zero,358 <fail>
  35c:	00119193          	slli	gp,gp,0x1
  360:	0011e193          	ori	gp,gp,1
- 364:	05d00893          	li	a7,93
- 368:	00018513          	mv	a0,gp
+ 364:	05d00893          	addi	a7,zero,93
+ 368:	00018513          	addi	a0,gp,0
  36c:	00000073          	ecall
 
 00000370 <pass>:
- 370:	00100193          	li	gp,1
- 374:	05d00893          	li	a7,93
- 378:	00000513          	li	a0,0
+ 370:	00100193          	addi	gp,zero,1
+ 374:	05d00893          	addi	a7,zero,93
+ 378:	00000513          	addi	a0,zero,0
  37c:	00000073          	ecall
  380:	c0001073          	unimp

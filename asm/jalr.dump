@@ -5,17 +5,17 @@ jalr:     file format elf32-littleriscv
 Disassembly of section .text.init:
 
 00000000 <_start>:
-   0:	0040006f          	j	4 <reset_vector>
+   0:	0040006f          	jal	zero,4 <reset_vector>
 
 00000004 <reset_vector>:
-   4:	00200193          	li	gp,2
-   8:	00000293          	li	t0,0
+   4:	00200193          	addi	gp,zero,2
+   8:	00000293          	addi	t0,zero,0
    c:	00000317          	auipc	t1,0x0
   10:	01030313          	addi	t1,t1,16 # 1c <target_2>
-  14:	000302e7          	jalr	t0,t1
+  14:	000302e7          	jalr	t0,0(t1)
 
 00000018 <linkaddr_2>:
-  18:	0e00006f          	j	f8 <fail>
+  18:	0e00006f          	jal	zero,f8 <fail>
 
 0000001c <target_2>:
   1c:	00000317          	auipc	t1,0x0
@@ -23,13 +23,13 @@ Disassembly of section .text.init:
   24:	0c629a63          	bne	t0,t1,f8 <fail>
 
 00000028 <test_3>:
-  28:	00300193          	li	gp,3
+  28:	00300193          	addi	gp,zero,3
   2c:	00000297          	auipc	t0,0x0
   30:	01028293          	addi	t0,t0,16 # 3c <target_3>
-  34:	000282e7          	jalr	t0,t0
+  34:	000282e7          	jalr	t0,0(t0)
 
 00000038 <linkaddr_3>:
-  38:	0c00006f          	j	f8 <fail>
+  38:	0c00006f          	jal	zero,f8 <fail>
 
 0000003c <target_3>:
   3c:	00000317          	auipc	t1,0x0
@@ -37,84 +37,84 @@ Disassembly of section .text.init:
   44:	0a629a63          	bne	t0,t1,f8 <fail>
 
 00000048 <test_4>:
-  48:	00400193          	li	gp,4
-  4c:	00000213          	li	tp,0
+  48:	00400193          	addi	gp,zero,4
+  4c:	00000213          	addi	tp,zero,0
   50:	00000317          	auipc	t1,0x0
   54:	01030313          	addi	t1,t1,16 # 60 <test_4+0x18>
-  58:	000306e7          	jalr	a3,t1
+  58:	000306e7          	jalr	a3,0(t1)
   5c:	08301e63          	bne	zero,gp,f8 <fail>
   60:	00120213          	addi	tp,tp,1 # 1 <_start+0x1>
-  64:	00200293          	li	t0,2
+  64:	00200293          	addi	t0,zero,2
   68:	fe5214e3          	bne	tp,t0,50 <test_4+0x8>
 
 0000006c <test_5>:
-  6c:	00500193          	li	gp,5
-  70:	00000213          	li	tp,0
+  6c:	00500193          	addi	gp,zero,5
+  70:	00000213          	addi	tp,zero,0
   74:	00000317          	auipc	t1,0x0
   78:	01430313          	addi	t1,t1,20 # 88 <test_5+0x1c>
-  7c:	00000013          	nop
-  80:	000306e7          	jalr	a3,t1
+  7c:	00000013          	addi	zero,zero,0
+  80:	000306e7          	jalr	a3,0(t1)
   84:	06301a63          	bne	zero,gp,f8 <fail>
   88:	00120213          	addi	tp,tp,1 # 1 <_start+0x1>
-  8c:	00200293          	li	t0,2
+  8c:	00200293          	addi	t0,zero,2
   90:	fe5212e3          	bne	tp,t0,74 <test_5+0x8>
 
 00000094 <test_6>:
-  94:	00600193          	li	gp,6
-  98:	00000213          	li	tp,0
+  94:	00600193          	addi	gp,zero,6
+  98:	00000213          	addi	tp,zero,0
   9c:	00000317          	auipc	t1,0x0
   a0:	01830313          	addi	t1,t1,24 # b4 <test_6+0x20>
-  a4:	00000013          	nop
-  a8:	00000013          	nop
-  ac:	000306e7          	jalr	a3,t1
+  a4:	00000013          	addi	zero,zero,0
+  a8:	00000013          	addi	zero,zero,0
+  ac:	000306e7          	jalr	a3,0(t1)
   b0:	04301463          	bne	zero,gp,f8 <fail>
   b4:	00120213          	addi	tp,tp,1 # 1 <_start+0x1>
-  b8:	00200293          	li	t0,2
+  b8:	00200293          	addi	t0,zero,2
   bc:	fe5210e3          	bne	tp,t0,9c <test_6+0x8>
 
 000000c0 <test_7>:
-  c0:	00100293          	li	t0,1
+  c0:	00100293          	addi	t0,zero,1
   c4:	00000317          	auipc	t1,0x0
   c8:	01c30313          	addi	t1,t1,28 # e0 <test_7+0x20>
-  cc:	ffc30067          	jr	-4(t1)
+  cc:	ffc30067          	jalr	zero,-4(t1)
   d0:	00128293          	addi	t0,t0,1
   d4:	00128293          	addi	t0,t0,1
   d8:	00128293          	addi	t0,t0,1
   dc:	00128293          	addi	t0,t0,1
   e0:	00128293          	addi	t0,t0,1
   e4:	00128293          	addi	t0,t0,1
-  e8:	00400393          	li	t2,4
-  ec:	00700193          	li	gp,7
+  e8:	00400393          	addi	t2,zero,4
+  ec:	00700193          	addi	gp,zero,7
   f0:	00729463          	bne	t0,t2,f8 <fail>
   f4:	00301e63          	bne	zero,gp,110 <pass>
 
 000000f8 <fail>:
-  f8:	00018063          	beqz	gp,f8 <fail>
+  f8:	00018063          	beq	gp,zero,f8 <fail>
   fc:	00119193          	slli	gp,gp,0x1
  100:	0011e193          	ori	gp,gp,1
- 104:	05d00893          	li	a7,93
- 108:	00018513          	mv	a0,gp
+ 104:	05d00893          	addi	a7,zero,93
+ 108:	00018513          	addi	a0,gp,0
  10c:	00000073          	ecall
 
 00000110 <pass>:
- 110:	00100193          	li	gp,1
- 114:	05d00893          	li	a7,93
- 118:	00000513          	li	a0,0
+ 110:	00100193          	addi	gp,zero,1
+ 114:	05d00893          	addi	a7,zero,93
+ 118:	00000513          	addi	a0,zero,0
  11c:	00000073          	ecall
  120:	c0001073          	unimp
- 124:	0000                	unimp
- 126:	0000                	unimp
- 128:	0000                	unimp
- 12a:	0000                	unimp
- 12c:	0000                	unimp
- 12e:	0000                	unimp
- 130:	0000                	unimp
- 132:	0000                	unimp
- 134:	0000                	unimp
- 136:	0000                	unimp
- 138:	0000                	unimp
- 13a:	0000                	unimp
- 13c:	0000                	unimp
- 13e:	0000                	unimp
- 140:	0000                	unimp
- 142:	0000                	unimp
+ 124:	0000                	c.unimp
+ 126:	0000                	c.unimp
+ 128:	0000                	c.unimp
+ 12a:	0000                	c.unimp
+ 12c:	0000                	c.unimp
+ 12e:	0000                	c.unimp
+ 130:	0000                	c.unimp
+ 132:	0000                	c.unimp
+ 134:	0000                	c.unimp
+ 136:	0000                	c.unimp
+ 138:	0000                	c.unimp
+ 13a:	0000                	c.unimp
+ 13c:	0000                	c.unimp
+ 13e:	0000                	c.unimp
+ 140:	0000                	c.unimp
+ 142:	0000                	c.unimp
