@@ -10,111 +10,103 @@ Disassembly of section .text.init:
 00000004 <reset_vector>:
    4:	00200193          	addi	x3,x0,2
    8:	00000293          	addi	x5,x0,0
-   c:	00000317          	auipc	x6,0x0
-  10:	01030313          	addi	x6,x6,16 # 1c <target_2>
-  14:	000302e7          	jalr	x5,0(x6)
+   c:	01800313          	addi	x6,x0,24
+  10:	000302e7          	jalr	x5,0(x6)
 
-00000018 <linkaddr_2>:
-  18:	0e00006f          	jal	x0,f8 <fail>
+00000014 <linkaddr_2>:
+  14:	0c40006f          	jal	x0,d8 <fail>
 
-0000001c <target_2>:
-  1c:	00000317          	auipc	x6,0x0
-  20:	ffc30313          	addi	x6,x6,-4 # 18 <linkaddr_2>
-  24:	0c629a63          	bne	x5,x6,f8 <fail>
+00000018 <target_2>:
+  18:	01400313          	addi	x6,x0,20
+  1c:	0a629e63          	bne	x5,x6,d8 <fail>
 
-00000028 <test_3>:
-  28:	00300193          	addi	x3,x0,3
-  2c:	00000297          	auipc	x5,0x0
-  30:	01028293          	addi	x5,x5,16 # 3c <target_3>
-  34:	000282e7          	jalr	x5,0(x5)
+00000020 <test_3>:
+  20:	00300193          	addi	x3,x0,3
+  24:	03000293          	addi	x5,x0,48
+  28:	000282e7          	jalr	x5,0(x5)
 
-00000038 <linkaddr_3>:
-  38:	0c00006f          	jal	x0,f8 <fail>
+0000002c <linkaddr_3>:
+  2c:	0ac0006f          	jal	x0,d8 <fail>
 
-0000003c <target_3>:
-  3c:	00000317          	auipc	x6,0x0
-  40:	ffc30313          	addi	x6,x6,-4 # 38 <linkaddr_3>
-  44:	0a629a63          	bne	x5,x6,f8 <fail>
+00000030 <target_3>:
+  30:	02c00313          	addi	x6,x0,44
+  34:	0a629263          	bne	x5,x6,d8 <fail>
 
-00000048 <test_4>:
-  48:	00400193          	addi	x3,x0,4
-  4c:	00000213          	addi	x4,x0,0
-  50:	00000317          	auipc	x6,0x0
-  54:	01030313          	addi	x6,x6,16 # 60 <test_4+0x18>
-  58:	000306e7          	jalr	x13,0(x6)
-  5c:	08301e63          	bne	x0,x3,f8 <fail>
-  60:	00120213          	addi	x4,x4,1 # 1 <_start+0x1>
-  64:	00200293          	addi	x5,x0,2
-  68:	fe5214e3          	bne	x4,x5,50 <test_4+0x8>
+00000038 <test_4>:
+  38:	00400193          	addi	x3,x0,4
+  3c:	00000213          	addi	x4,x0,0
+  40:	04c00313          	addi	x6,x0,76
+  44:	000306e7          	jalr	x13,0(x6)
+  48:	08301863          	bne	x0,x3,d8 <fail>
+  4c:	00120213          	addi	x4,x4,1 # 1 <_start+0x1>
+  50:	00200293          	addi	x5,x0,2
+  54:	fe5216e3          	bne	x4,x5,40 <test_4+0x8>
 
-0000006c <test_5>:
-  6c:	00500193          	addi	x3,x0,5
-  70:	00000213          	addi	x4,x0,0
-  74:	00000317          	auipc	x6,0x0
-  78:	01430313          	addi	x6,x6,20 # 88 <test_5+0x1c>
-  7c:	00000013          	addi	x0,x0,0
-  80:	000306e7          	jalr	x13,0(x6)
-  84:	06301a63          	bne	x0,x3,f8 <fail>
-  88:	00120213          	addi	x4,x4,1 # 1 <_start+0x1>
-  8c:	00200293          	addi	x5,x0,2
-  90:	fe5212e3          	bne	x4,x5,74 <test_5+0x8>
+00000058 <test_5>:
+  58:	00500193          	addi	x3,x0,5
+  5c:	00000213          	addi	x4,x0,0
+  60:	07000313          	addi	x6,x0,112
+  64:	00000013          	addi	x0,x0,0
+  68:	000306e7          	jalr	x13,0(x6)
+  6c:	06301663          	bne	x0,x3,d8 <fail>
+  70:	00120213          	addi	x4,x4,1 # 1 <_start+0x1>
+  74:	00200293          	addi	x5,x0,2
+  78:	fe5214e3          	bne	x4,x5,60 <test_5+0x8>
 
-00000094 <test_6>:
-  94:	00600193          	addi	x3,x0,6
-  98:	00000213          	addi	x4,x0,0
-  9c:	00000317          	auipc	x6,0x0
-  a0:	01830313          	addi	x6,x6,24 # b4 <test_6+0x20>
-  a4:	00000013          	addi	x0,x0,0
-  a8:	00000013          	addi	x0,x0,0
-  ac:	000306e7          	jalr	x13,0(x6)
-  b0:	04301463          	bne	x0,x3,f8 <fail>
-  b4:	00120213          	addi	x4,x4,1 # 1 <_start+0x1>
-  b8:	00200293          	addi	x5,x0,2
-  bc:	fe5210e3          	bne	x4,x5,9c <test_6+0x8>
+0000007c <test_6>:
+  7c:	00600193          	addi	x3,x0,6
+  80:	00000213          	addi	x4,x0,0
+  84:	09800313          	addi	x6,x0,152
+  88:	00000013          	addi	x0,x0,0
+  8c:	00000013          	addi	x0,x0,0
+  90:	000306e7          	jalr	x13,0(x6)
+  94:	04301263          	bne	x0,x3,d8 <fail>
+  98:	00120213          	addi	x4,x4,1 # 1 <_start+0x1>
+  9c:	00200293          	addi	x5,x0,2
+  a0:	fe5212e3          	bne	x4,x5,84 <test_6+0x8>
 
-000000c0 <test_7>:
-  c0:	00100293          	addi	x5,x0,1
-  c4:	00000317          	auipc	x6,0x0
-  c8:	01c30313          	addi	x6,x6,28 # e0 <test_7+0x20>
-  cc:	ffc30067          	jalr	x0,-4(x6)
-  d0:	00128293          	addi	x5,x5,1
-  d4:	00128293          	addi	x5,x5,1
-  d8:	00128293          	addi	x5,x5,1
-  dc:	00128293          	addi	x5,x5,1
-  e0:	00128293          	addi	x5,x5,1
-  e4:	00128293          	addi	x5,x5,1
-  e8:	00400393          	addi	x7,x0,4
-  ec:	00700193          	addi	x3,x0,7
-  f0:	00729463          	bne	x5,x7,f8 <fail>
-  f4:	00301e63          	bne	x0,x3,110 <pass>
+000000a4 <test_7>:
+  a4:	00100293          	addi	x5,x0,1
+  a8:	0c000313          	addi	x6,x0,192
+  ac:	ffc30067          	jalr	x0,-4(x6)
+  b0:	00128293          	addi	x5,x5,1
+  b4:	00128293          	addi	x5,x5,1
+  b8:	00128293          	addi	x5,x5,1
+  bc:	00128293          	addi	x5,x5,1
+  c0:	00128293          	addi	x5,x5,1
+  c4:	00128293          	addi	x5,x5,1
+  c8:	00400393          	addi	x7,x0,4
+  cc:	00700193          	addi	x3,x0,7
+  d0:	00729463          	bne	x5,x7,d8 <fail>
+  d4:	00301e63          	bne	x0,x3,f0 <pass>
 
-000000f8 <fail>:
-  f8:	00018063          	beq	x3,x0,f8 <fail>
-  fc:	00119193          	slli	x3,x3,0x1
- 100:	0011e193          	ori	x3,x3,1
- 104:	05d00893          	addi	x17,x0,93
- 108:	00018513          	addi	x10,x3,0
- 10c:	00000073          	ecall
+000000d8 <fail>:
+  d8:	00018063          	beq	x3,x0,d8 <fail>
+  dc:	00119193          	slli	x3,x3,0x1
+  e0:	0011e193          	ori	x3,x3,1
+  e4:	05d00893          	addi	x17,x0,93
+  e8:	00018513          	addi	x10,x3,0
+  ec:	00000073          	ecall
 
-00000110 <pass>:
- 110:	00100193          	addi	x3,x0,1
- 114:	05d00893          	addi	x17,x0,93
- 118:	00000513          	addi	x10,x0,0
- 11c:	00000073          	ecall
- 120:	c0001073          	unimp
- 124:	0000                	c.unimp
- 126:	0000                	c.unimp
- 128:	0000                	c.unimp
- 12a:	0000                	c.unimp
- 12c:	0000                	c.unimp
- 12e:	0000                	c.unimp
- 130:	0000                	c.unimp
- 132:	0000                	c.unimp
- 134:	0000                	c.unimp
- 136:	0000                	c.unimp
- 138:	0000                	c.unimp
- 13a:	0000                	c.unimp
- 13c:	0000                	c.unimp
- 13e:	0000                	c.unimp
- 140:	0000                	c.unimp
- 142:	0000                	c.unimp
+000000f0 <pass>:
+  f0:	00100193          	addi	x3,x0,1
+  f4:	05d00893          	addi	x17,x0,93
+  f8:	00000513          	addi	x10,x0,0
+  fc:	00000073          	ecall
+ 100:	c0001073          	unimp
+ 104:	0000                	c.unimp
+ 106:	0000                	c.unimp
+ 108:	0000                	c.unimp
+ 10a:	0000                	c.unimp
+ 10c:	0000                	c.unimp
+ 10e:	0000                	c.unimp
+ 110:	0000                	c.unimp
+ 112:	0000                	c.unimp
+ 114:	0000                	c.unimp
+ 116:	0000                	c.unimp
+ 118:	0000                	c.unimp
+ 11a:	0000                	c.unimp
+ 11c:	0000                	c.unimp
+ 11e:	0000                	c.unimp
+ 120:	0000                	c.unimp
+ 122:	0000                	c.unimp

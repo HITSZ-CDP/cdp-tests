@@ -8,64 +8,64 @@ Disassembly of section .text.init:
    0:	0040006f          	jal	x0,4 <reset_vector>
 
 00000004 <reset_vector>:
-   4:	00002097          	auipc	x1,0x2
-   8:	ffc08093          	addi	x1,x1,-4 # 2000 <begin_signature>
+   4:	000020b7          	lui	x1,0x2
+   8:	00008093          	addi	x1,x1,0 # 2000 <begin_signature>
    c:	00008703          	lb	x14,0(x1)
   10:	fff00393          	addi	x7,x0,-1
   14:	00200193          	addi	x3,x0,2
   18:	22771c63          	bne	x14,x7,250 <fail>
 
 0000001c <test_3>:
-  1c:	00002097          	auipc	x1,0x2
-  20:	fe408093          	addi	x1,x1,-28 # 2000 <begin_signature>
+  1c:	000020b7          	lui	x1,0x2
+  20:	00008093          	addi	x1,x1,0 # 2000 <begin_signature>
   24:	00108703          	lb	x14,1(x1)
   28:	00000393          	addi	x7,x0,0
   2c:	00300193          	addi	x3,x0,3
   30:	22771063          	bne	x14,x7,250 <fail>
 
 00000034 <test_4>:
-  34:	00002097          	auipc	x1,0x2
-  38:	fcc08093          	addi	x1,x1,-52 # 2000 <begin_signature>
+  34:	000020b7          	lui	x1,0x2
+  38:	00008093          	addi	x1,x1,0 # 2000 <begin_signature>
   3c:	00208703          	lb	x14,2(x1)
   40:	ff000393          	addi	x7,x0,-16
   44:	00400193          	addi	x3,x0,4
   48:	20771463          	bne	x14,x7,250 <fail>
 
 0000004c <test_5>:
-  4c:	00002097          	auipc	x1,0x2
-  50:	fb408093          	addi	x1,x1,-76 # 2000 <begin_signature>
+  4c:	000020b7          	lui	x1,0x2
+  50:	00008093          	addi	x1,x1,0 # 2000 <begin_signature>
   54:	00308703          	lb	x14,3(x1)
   58:	00f00393          	addi	x7,x0,15
   5c:	00500193          	addi	x3,x0,5
   60:	1e771863          	bne	x14,x7,250 <fail>
 
 00000064 <test_6>:
-  64:	00002097          	auipc	x1,0x2
-  68:	f9f08093          	addi	x1,x1,-97 # 2003 <tdat4>
+  64:	000020b7          	lui	x1,0x2
+  68:	00308093          	addi	x1,x1,3 # 2003 <tdat4>
   6c:	ffd08703          	lb	x14,-3(x1)
   70:	fff00393          	addi	x7,x0,-1
   74:	00600193          	addi	x3,x0,6
   78:	1c771c63          	bne	x14,x7,250 <fail>
 
 0000007c <test_7>:
-  7c:	00002097          	auipc	x1,0x2
-  80:	f8708093          	addi	x1,x1,-121 # 2003 <tdat4>
+  7c:	000020b7          	lui	x1,0x2
+  80:	00308093          	addi	x1,x1,3 # 2003 <tdat4>
   84:	ffe08703          	lb	x14,-2(x1)
   88:	00000393          	addi	x7,x0,0
   8c:	00700193          	addi	x3,x0,7
   90:	1c771063          	bne	x14,x7,250 <fail>
 
 00000094 <test_8>:
-  94:	00002097          	auipc	x1,0x2
-  98:	f6f08093          	addi	x1,x1,-145 # 2003 <tdat4>
+  94:	000020b7          	lui	x1,0x2
+  98:	00308093          	addi	x1,x1,3 # 2003 <tdat4>
   9c:	fff08703          	lb	x14,-1(x1)
   a0:	ff000393          	addi	x7,x0,-16
   a4:	00800193          	addi	x3,x0,8
   a8:	1a771463          	bne	x14,x7,250 <fail>
 
 000000ac <test_9>:
-  ac:	00002097          	auipc	x1,0x2
-  b0:	f5708093          	addi	x1,x1,-169 # 2003 <tdat4>
+  ac:	000020b7          	lui	x1,0x2
+  b0:	00308093          	addi	x1,x1,3 # 2003 <tdat4>
   b4:	00008703          	lb	x14,0(x1)
   b8:	00f00393          	addi	x7,x0,15
   bc:	00900193          	addi	x3,x0,9
@@ -92,8 +92,8 @@ Disassembly of section .text.init:
 000000fc <test_12>:
   fc:	00c00193          	addi	x3,x0,12
  100:	00000213          	addi	x4,x0,0
- 104:	00002097          	auipc	x1,0x2
- 108:	efd08093          	addi	x1,x1,-259 # 2001 <tdat2>
+ 104:	000020b7          	lui	x1,0x2
+ 108:	00108093          	addi	x1,x1,1 # 2001 <tdat2>
  10c:	00108703          	lb	x14,1(x1)
  110:	00070313          	addi	x6,x14,0
  114:	ff000393          	addi	x7,x0,-16
@@ -105,8 +105,8 @@ Disassembly of section .text.init:
 00000128 <test_13>:
  128:	00d00193          	addi	x3,x0,13
  12c:	00000213          	addi	x4,x0,0
- 130:	00002097          	auipc	x1,0x2
- 134:	ed208093          	addi	x1,x1,-302 # 2002 <tdat3>
+ 130:	000020b7          	lui	x1,0x2
+ 134:	00208093          	addi	x1,x1,2 # 2002 <tdat3>
  138:	00108703          	lb	x14,1(x1)
  13c:	00000013          	addi	x0,x0,0
  140:	00070313          	addi	x6,x14,0
@@ -119,8 +119,8 @@ Disassembly of section .text.init:
 00000158 <test_14>:
  158:	00e00193          	addi	x3,x0,14
  15c:	00000213          	addi	x4,x0,0
- 160:	00002097          	auipc	x1,0x2
- 164:	ea008093          	addi	x1,x1,-352 # 2000 <begin_signature>
+ 160:	000020b7          	lui	x1,0x2
+ 164:	00008093          	addi	x1,x1,0 # 2000 <begin_signature>
  168:	00108703          	lb	x14,1(x1)
  16c:	00000013          	addi	x0,x0,0
  170:	00000013          	addi	x0,x0,0
@@ -134,8 +134,8 @@ Disassembly of section .text.init:
 0000018c <test_15>:
  18c:	00f00193          	addi	x3,x0,15
  190:	00000213          	addi	x4,x0,0
- 194:	00002097          	auipc	x1,0x2
- 198:	e6d08093          	addi	x1,x1,-403 # 2001 <tdat2>
+ 194:	000020b7          	lui	x1,0x2
+ 198:	00108093          	addi	x1,x1,1 # 2001 <tdat2>
  19c:	00108703          	lb	x14,1(x1)
  1a0:	ff000393          	addi	x7,x0,-16
  1a4:	0a771663          	bne	x14,x7,250 <fail>
@@ -146,8 +146,8 @@ Disassembly of section .text.init:
 000001b4 <test_16>:
  1b4:	01000193          	addi	x3,x0,16
  1b8:	00000213          	addi	x4,x0,0
- 1bc:	00002097          	auipc	x1,0x2
- 1c0:	e4608093          	addi	x1,x1,-442 # 2002 <tdat3>
+ 1bc:	000020b7          	lui	x1,0x2
+ 1c0:	00208093          	addi	x1,x1,2 # 2002 <tdat3>
  1c4:	00000013          	addi	x0,x0,0
  1c8:	00108703          	lb	x14,1(x1)
  1cc:	00f00393          	addi	x7,x0,15
@@ -159,8 +159,8 @@ Disassembly of section .text.init:
 000001e0 <test_17>:
  1e0:	01100193          	addi	x3,x0,17
  1e4:	00000213          	addi	x4,x0,0
- 1e8:	00002097          	auipc	x1,0x2
- 1ec:	e1808093          	addi	x1,x1,-488 # 2000 <begin_signature>
+ 1e8:	000020b7          	lui	x1,0x2
+ 1ec:	00008093          	addi	x1,x1,0 # 2000 <begin_signature>
  1f0:	00000013          	addi	x0,x0,0
  1f4:	00000013          	addi	x0,x0,0
  1f8:	00108703          	lb	x14,1(x1)

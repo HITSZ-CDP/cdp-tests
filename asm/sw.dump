@@ -8,8 +8,8 @@ Disassembly of section .text.init:
    0:	0040006f          	jal	x0,4 <reset_vector>
 
 00000004 <reset_vector>:
-   4:	00002097          	auipc	x1,0x2
-   8:	ffc08093          	addi	x1,x1,-4 # 2000 <begin_signature>
+   4:	000020b7          	lui	x1,0x2
+   8:	00008093          	addi	x1,x1,0 # 2000 <begin_signature>
    c:	00aa0137          	lui	x2,0xaa0
   10:	0aa10113          	addi	x2,x2,170 # aa00aa <_end+0xa9e07a>
   14:	0020a023          	sw	x2,0(x1)
@@ -20,8 +20,8 @@ Disassembly of section .text.init:
   28:	46771063          	bne	x14,x7,488 <fail>
 
 0000002c <test_3>:
-  2c:	00002097          	auipc	x1,0x2
-  30:	fd408093          	addi	x1,x1,-44 # 2000 <begin_signature>
+  2c:	000020b7          	lui	x1,0x2
+  30:	00008093          	addi	x1,x1,0 # 2000 <begin_signature>
   34:	aa00b137          	lui	x2,0xaa00b
   38:	a0010113          	addi	x2,x2,-1536 # aa00aa00 <_end+0xaa0089d0>
   3c:	0020a223          	sw	x2,4(x1)
@@ -32,8 +32,8 @@ Disassembly of section .text.init:
   50:	42771c63          	bne	x14,x7,488 <fail>
 
 00000054 <test_4>:
-  54:	00002097          	auipc	x1,0x2
-  58:	fac08093          	addi	x1,x1,-84 # 2000 <begin_signature>
+  54:	000020b7          	lui	x1,0x2
+  58:	00008093          	addi	x1,x1,0 # 2000 <begin_signature>
   5c:	0aa01137          	lui	x2,0xaa01
   60:	aa010113          	addi	x2,x2,-1376 # aa00aa0 <_end+0xa9fea70>
   64:	0020a423          	sw	x2,8(x1)
@@ -44,8 +44,8 @@ Disassembly of section .text.init:
   78:	40771863          	bne	x14,x7,488 <fail>
 
 0000007c <test_5>:
-  7c:	00002097          	auipc	x1,0x2
-  80:	f8408093          	addi	x1,x1,-124 # 2000 <begin_signature>
+  7c:	000020b7          	lui	x1,0x2
+  80:	00008093          	addi	x1,x1,0 # 2000 <begin_signature>
   84:	a00aa137          	lui	x2,0xa00aa
   88:	00a10113          	addi	x2,x2,10 # a00aa00a <_end+0xa00a7fda>
   8c:	0020a623          	sw	x2,12(x1)
@@ -56,8 +56,8 @@ Disassembly of section .text.init:
   a0:	3e771463          	bne	x14,x7,488 <fail>
 
 000000a4 <test_6>:
-  a4:	00002097          	auipc	x1,0x2
-  a8:	f7808093          	addi	x1,x1,-136 # 201c <tdat8>
+  a4:	000020b7          	lui	x1,0x2
+  a8:	01c08093          	addi	x1,x1,28 # 201c <tdat8>
   ac:	00aa0137          	lui	x2,0xaa0
   b0:	0aa10113          	addi	x2,x2,170 # aa00aa <_end+0xa9e07a>
   b4:	fe20aa23          	sw	x2,-12(x1)
@@ -68,8 +68,8 @@ Disassembly of section .text.init:
   c8:	3c771063          	bne	x14,x7,488 <fail>
 
 000000cc <test_7>:
-  cc:	00002097          	auipc	x1,0x2
-  d0:	f5008093          	addi	x1,x1,-176 # 201c <tdat8>
+  cc:	000020b7          	lui	x1,0x2
+  d0:	01c08093          	addi	x1,x1,28 # 201c <tdat8>
   d4:	aa00b137          	lui	x2,0xaa00b
   d8:	a0010113          	addi	x2,x2,-1536 # aa00aa00 <_end+0xaa0089d0>
   dc:	fe20ac23          	sw	x2,-8(x1)
@@ -80,8 +80,8 @@ Disassembly of section .text.init:
   f0:	38771c63          	bne	x14,x7,488 <fail>
 
 000000f4 <test_8>:
-  f4:	00002097          	auipc	x1,0x2
-  f8:	f2808093          	addi	x1,x1,-216 # 201c <tdat8>
+  f4:	000020b7          	lui	x1,0x2
+  f8:	01c08093          	addi	x1,x1,28 # 201c <tdat8>
   fc:	0aa01137          	lui	x2,0xaa01
  100:	aa010113          	addi	x2,x2,-1376 # aa00aa0 <_end+0xa9fea70>
  104:	fe20ae23          	sw	x2,-4(x1)
@@ -92,8 +92,8 @@ Disassembly of section .text.init:
  118:	36771863          	bne	x14,x7,488 <fail>
 
 0000011c <test_9>:
- 11c:	00002097          	auipc	x1,0x2
- 120:	f0008093          	addi	x1,x1,-256 # 201c <tdat8>
+ 11c:	000020b7          	lui	x1,0x2
+ 120:	01c08093          	addi	x1,x1,28 # 201c <tdat8>
  124:	a00aa137          	lui	x2,0xa00aa
  128:	00a10113          	addi	x2,x2,10 # a00aa00a <_end+0xa00a7fda>
  12c:	0020a023          	sw	x2,0(x1)
@@ -104,8 +104,8 @@ Disassembly of section .text.init:
  140:	34771463          	bne	x14,x7,488 <fail>
 
 00000144 <test_10>:
- 144:	00002097          	auipc	x1,0x2
- 148:	edc08093          	addi	x1,x1,-292 # 2020 <tdat9>
+ 144:	000020b7          	lui	x1,0x2
+ 148:	02008093          	addi	x1,x1,32 # 2020 <tdat9>
  14c:	12345137          	lui	x2,0x12345
  150:	67810113          	addi	x2,x2,1656 # 12345678 <_end+0x12343648>
  154:	fe008213          	addi	x4,x1,-32
@@ -117,14 +117,14 @@ Disassembly of section .text.init:
  16c:	30729e63          	bne	x5,x7,488 <fail>
 
 00000170 <test_11>:
- 170:	00002097          	auipc	x1,0x2
- 174:	eb008093          	addi	x1,x1,-336 # 2020 <tdat9>
+ 170:	000020b7          	lui	x1,0x2
+ 174:	02008093          	addi	x1,x1,32 # 2020 <tdat9>
  178:	58213137          	lui	x2,0x58213
  17c:	09810113          	addi	x2,x2,152 # 58213098 <_end+0x58211068>
  180:	ffd08093          	addi	x1,x1,-3
  184:	0020a3a3          	sw	x2,7(x1)
- 188:	00002217          	auipc	x4,0x2
- 18c:	e9c20213          	addi	x4,x4,-356 # 2024 <tdat10>
+ 188:	00002237          	lui	x4,0x2
+ 18c:	02020213          	addi	x4,x4,32 # 2020 <tdat9>
  190:	00022283          	lw	x5,0(x4) # 0 <_start>
  194:	582133b7          	lui	x7,0x58213
  198:	09838393          	addi	x7,x7,152 # 58213098 <_end+0x58211068>
@@ -136,8 +136,8 @@ Disassembly of section .text.init:
  1a8:	00000213          	addi	x4,x0,0
  1ac:	aabbd0b7          	lui	x1,0xaabbd
  1b0:	cdd08093          	addi	x1,x1,-803 # aabbccdd <_end+0xaabbacad>
- 1b4:	00002117          	auipc	x2,0x2
- 1b8:	e4c10113          	addi	x2,x2,-436 # 2000 <begin_signature>
+ 1b4:	00002137          	lui	x2,0x2
+ 1b8:	00010113          	addi	x2,x2,0 # 2000 <begin_signature>
  1bc:	00112023          	sw	x1,0(x2)
  1c0:	00012703          	lw	x14,0(x2)
  1c4:	aabbd3b7          	lui	x7,0xaabbd
@@ -152,8 +152,8 @@ Disassembly of section .text.init:
  1e0:	00000213          	addi	x4,x0,0
  1e4:	daabc0b7          	lui	x1,0xdaabc
  1e8:	ccd08093          	addi	x1,x1,-819 # daabbccd <_end+0xdaab9c9d>
- 1ec:	00002117          	auipc	x2,0x2
- 1f0:	e1410113          	addi	x2,x2,-492 # 2000 <begin_signature>
+ 1ec:	00002137          	lui	x2,0x2
+ 1f0:	00010113          	addi	x2,x2,0 # 2000 <begin_signature>
  1f4:	00000013          	addi	x0,x0,0
  1f8:	00112223          	sw	x1,4(x2)
  1fc:	00412703          	lw	x14,4(x2)
@@ -169,8 +169,8 @@ Disassembly of section .text.init:
  21c:	00000213          	addi	x4,x0,0
  220:	ddaac0b7          	lui	x1,0xddaac
  224:	bcc08093          	addi	x1,x1,-1076 # ddaabbcc <_end+0xddaa9b9c>
- 228:	00002117          	auipc	x2,0x2
- 22c:	dd810113          	addi	x2,x2,-552 # 2000 <begin_signature>
+ 228:	00002137          	lui	x2,0x2
+ 22c:	00010113          	addi	x2,x2,0 # 2000 <begin_signature>
  230:	00000013          	addi	x0,x0,0
  234:	00000013          	addi	x0,x0,0
  238:	00112423          	sw	x1,8(x2)
@@ -188,8 +188,8 @@ Disassembly of section .text.init:
  260:	cddab0b7          	lui	x1,0xcddab
  264:	bbc08093          	addi	x1,x1,-1092 # cddaabbc <_end+0xcdda8b8c>
  268:	00000013          	addi	x0,x0,0
- 26c:	00002117          	auipc	x2,0x2
- 270:	d9410113          	addi	x2,x2,-620 # 2000 <begin_signature>
+ 26c:	00002137          	lui	x2,0x2
+ 270:	00010113          	addi	x2,x2,0 # 2000 <begin_signature>
  274:	00112623          	sw	x1,12(x2)
  278:	00c12703          	lw	x14,12(x2)
  27c:	cddab3b7          	lui	x7,0xcddab
@@ -205,8 +205,8 @@ Disassembly of section .text.init:
  29c:	ccddb0b7          	lui	x1,0xccddb
  2a0:	abb08093          	addi	x1,x1,-1349 # ccddaabb <_end+0xccdd8a8b>
  2a4:	00000013          	addi	x0,x0,0
- 2a8:	00002117          	auipc	x2,0x2
- 2ac:	d5810113          	addi	x2,x2,-680 # 2000 <begin_signature>
+ 2a8:	00002137          	lui	x2,0x2
+ 2ac:	00010113          	addi	x2,x2,0 # 2000 <begin_signature>
  2b0:	00000013          	addi	x0,x0,0
  2b4:	00112823          	sw	x1,16(x2)
  2b8:	01012703          	lw	x14,16(x2)
@@ -224,8 +224,8 @@ Disassembly of section .text.init:
  2e0:	aab08093          	addi	x1,x1,-1365 # bccddaab <_end+0xbccdba7b>
  2e4:	00000013          	addi	x0,x0,0
  2e8:	00000013          	addi	x0,x0,0
- 2ec:	00002117          	auipc	x2,0x2
- 2f0:	d1410113          	addi	x2,x2,-748 # 2000 <begin_signature>
+ 2ec:	00002137          	lui	x2,0x2
+ 2f0:	00010113          	addi	x2,x2,0 # 2000 <begin_signature>
  2f4:	00112a23          	sw	x1,20(x2)
  2f8:	01412703          	lw	x14,20(x2)
  2fc:	bccde3b7          	lui	x7,0xbccde
@@ -238,8 +238,8 @@ Disassembly of section .text.init:
 00000314 <test_18>:
  314:	01200193          	addi	x3,x0,18
  318:	00000213          	addi	x4,x0,0
- 31c:	00002117          	auipc	x2,0x2
- 320:	ce410113          	addi	x2,x2,-796 # 2000 <begin_signature>
+ 31c:	00002137          	lui	x2,0x2
+ 320:	00010113          	addi	x2,x2,0 # 2000 <begin_signature>
  324:	001120b7          	lui	x1,0x112
  328:	23308093          	addi	x1,x1,563 # 112233 <_end+0x110203>
  32c:	00112023          	sw	x1,0(x2)
@@ -254,8 +254,8 @@ Disassembly of section .text.init:
 0000034c <test_19>:
  34c:	01300193          	addi	x3,x0,19
  350:	00000213          	addi	x4,x0,0
- 354:	00002117          	auipc	x2,0x2
- 358:	cac10113          	addi	x2,x2,-852 # 2000 <begin_signature>
+ 354:	00002137          	lui	x2,0x2
+ 358:	00010113          	addi	x2,x2,0 # 2000 <begin_signature>
  35c:	300110b7          	lui	x1,0x30011
  360:	22308093          	addi	x1,x1,547 # 30011223 <_end+0x3000f1f3>
  364:	00000013          	addi	x0,x0,0
@@ -271,8 +271,8 @@ Disassembly of section .text.init:
 00000388 <test_20>:
  388:	01400193          	addi	x3,x0,20
  38c:	00000213          	addi	x4,x0,0
- 390:	00002117          	auipc	x2,0x2
- 394:	c7010113          	addi	x2,x2,-912 # 2000 <begin_signature>
+ 390:	00002137          	lui	x2,0x2
+ 394:	00010113          	addi	x2,x2,0 # 2000 <begin_signature>
  398:	330010b7          	lui	x1,0x33001
  39c:	12208093          	addi	x1,x1,290 # 33001122 <_end+0x32fff0f2>
  3a0:	00000013          	addi	x0,x0,0
@@ -289,8 +289,8 @@ Disassembly of section .text.init:
 000003c8 <test_21>:
  3c8:	01500193          	addi	x3,x0,21
  3cc:	00000213          	addi	x4,x0,0
- 3d0:	00002117          	auipc	x2,0x2
- 3d4:	c3010113          	addi	x2,x2,-976 # 2000 <begin_signature>
+ 3d0:	00002137          	lui	x2,0x2
+ 3d4:	00010113          	addi	x2,x2,0 # 2000 <begin_signature>
  3d8:	00000013          	addi	x0,x0,0
  3dc:	233000b7          	lui	x1,0x23300
  3e0:	11208093          	addi	x1,x1,274 # 23300112 <_end+0x232fe0e2>
@@ -306,8 +306,8 @@ Disassembly of section .text.init:
 00000404 <test_22>:
  404:	01600193          	addi	x3,x0,22
  408:	00000213          	addi	x4,x0,0
- 40c:	00002117          	auipc	x2,0x2
- 410:	bf410113          	addi	x2,x2,-1036 # 2000 <begin_signature>
+ 40c:	00002137          	lui	x2,0x2
+ 410:	00010113          	addi	x2,x2,0 # 2000 <begin_signature>
  414:	00000013          	addi	x0,x0,0
  418:	223300b7          	lui	x1,0x22330
  41c:	01108093          	addi	x1,x1,17 # 22330011 <_end+0x2232dfe1>
@@ -324,8 +324,8 @@ Disassembly of section .text.init:
 00000444 <test_23>:
  444:	01700193          	addi	x3,x0,23
  448:	00000213          	addi	x4,x0,0
- 44c:	00002117          	auipc	x2,0x2
- 450:	bb410113          	addi	x2,x2,-1100 # 2000 <begin_signature>
+ 44c:	00002137          	lui	x2,0x2
+ 450:	00010113          	addi	x2,x2,0 # 2000 <begin_signature>
  454:	00000013          	addi	x0,x0,0
  458:	00000013          	addi	x0,x0,0
  45c:	122330b7          	lui	x1,0x12233
