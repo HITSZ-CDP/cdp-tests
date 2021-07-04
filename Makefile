@@ -5,7 +5,7 @@ TEST = addi
 TESTFILE = meminit.bin
 
 build: $(VSRC) $(CSRC)
-	@verilator -cc --exe --build $(VSRC) --top-module top $(CSRC) $(SIM_OPTS) +define+PATH=$(TESTFILE) -CFLAGS -DPATH=$(TESTFILE) 
+	@verilator -cc --exe --build $(VSRC) --top-module top $(CSRC) $(SIM_OPTS) +define+PATH=$(TESTFILE) -CFLAGS -DPATH=$(TESTFILE) -Imycpu
 	@mkdir -p waveform
 run: build
 	@ln -sf bin/$(TEST).bin $(TESTFILE)
