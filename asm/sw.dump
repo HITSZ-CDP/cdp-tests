@@ -124,7 +124,7 @@ Disassembly of section .text.init:
  180:	ffd08093          	addi	x1,x1,-3
  184:	0020a3a3          	sw	x2,7(x1)
  188:	00002237          	lui	x4,0x2
- 18c:	02020213          	addi	x4,x4,32 # 2020 <tdat9>
+ 18c:	02420213          	addi	x4,x4,36 # 2024 <tdat10>
  190:	00022283          	lw	x5,0(x4) # 0 <_start>
  194:	582133b7          	lui	x7,0x58213
  198:	09838393          	addi	x7,x7,152 # 58213098 <_end+0x58211068>
