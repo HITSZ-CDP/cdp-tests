@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "../include/cpu.h"
+#include <cpu.h>
 extern riscv32_CPU_state cpu;
 extern uint32_t memory[];
 

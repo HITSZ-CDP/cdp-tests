@@ -1,4 +1,4 @@
-#include "../include/cpu.h"
+#include <cpu.h>
 #include <stdio.h>
 #include <stdint.h>
 #include <stdlib.h>

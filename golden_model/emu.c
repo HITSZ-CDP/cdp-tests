@@ -1,6 +1,6 @@
-#include "include/cpu.h"
-#include "include/debug.h"
-#include "stdlib.h"
+#include <cpu.h>
+#include <debug.h>
+#include <stdlib.h>
 #include <stdint.h>
 #include <stdio.h>
 static const char *reg_name[33] = {

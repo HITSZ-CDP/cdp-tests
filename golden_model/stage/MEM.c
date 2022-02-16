@@ -1,4 +1,4 @@
-#include "../include/cpu.h"
+#include <cpu.h>
 #include <stdint.h>
 extern riscv32_CPU_state cpu;
 extern uint32_t memory[];

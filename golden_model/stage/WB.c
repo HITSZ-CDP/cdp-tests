@@ -1,4 +1,4 @@
-#include "../include/cpu.h"
+#include <cpu.h>
 extern riscv32_CPU_state cpu;
 WB_info WB(MEM2WB mem_info) {
     WB_info ret;

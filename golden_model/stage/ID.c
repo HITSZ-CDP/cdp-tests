@@ -1,5 +1,5 @@
-#include "../include/cpu.h"
-#include "../include/bin.h"
+#include <cpu.h>
+#include <bin.h>
 #include <stdint.h>
 #define pair(x, y) (((x) << 3) | (y))
 #define PAIR_ENTRY(x, y, OP) case pair(x,y): ret.alu_op = OP; break

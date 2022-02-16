@@ -3,7 +3,7 @@
 
 #include <sys/types.h>
 #include <verilated_vcd_c.h>
-#include "../golden_model/include/cpu.h"
+#include <cpu.h>
 
 template<class MODULE> class TESTBENCH {
 		public:

@@ -3,9 +3,10 @@ CSRC = $(wildcard golden_model/*.c) $(wildcard golden_model/stage/*.c) $(wildcar
 SIM_OPTS = --trace -Wno-lint -Wno-style
 TEST = addi
 TESTFILE = meminit.bin
+PWD = $(shell pwd)
 
 build: $(VSRC) $(CSRC)
-	@verilator -cc --exe --build $(VSRC) --top-module top $(CSRC) $(SIM_OPTS) +define+PATH=$(TESTFILE) -CFLAGS -DPATH=$(TESTFILE) -Imycpu
+	@verilator -cc --exe --build $(VSRC) --top-module top $(CSRC) $(SIM_OPTS) +define+PATH=$(TESTFILE) -CFLAGS -DPATH=$(TESTFILE) -Imycpu -CFLAGS -I$(PWD)/golden_model/include
 	@mkdir -p waveform
 run: build
 	@ln -sf bin/$(TEST).bin $(TESTFILE)
