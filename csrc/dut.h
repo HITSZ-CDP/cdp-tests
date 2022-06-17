@@ -46,18 +46,18 @@ template<class MODULE> class TESTBENCH {
             dut->clk = 0;
             dut->eval();
 
-            if(vltdump) vltdump->dump(10*count-1);
+            if(vltdump) vltdump->dump((vluint64_t)(10*count-1));
 
             // Repeat for the positive edge of the clock
             dut->clk = 1;
             dut->eval();
-            if(vltdump) vltdump->dump(10*count);
+            if(vltdump) vltdump->dump((vluint64_t)(10*count));
 
             // Now the negative edge
             dut->clk = 0;
             dut->eval();
             if (vltdump) {
-                vltdump->dump(10*count+5);
+                vltdump->dump((vluint64_t)(10*count+5));
                 vltdump->flush();
             }
             WB_info ret;
