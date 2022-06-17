@@ -2,8 +2,8 @@
 #define __CPU__
 #include <stdint.h>
 #include "debug.h"
-#define MEM_PADDR_BITS 10
-#define MEM_SZ (2 << MEM_PADDR_BITS)
+#define MEM_PADDR_BITS 16
+#define MEM_SZ (1 << MEM_PADDR_BITS)
 typedef struct {
   uint32_t gpr[32]; 
   uint32_t pc;

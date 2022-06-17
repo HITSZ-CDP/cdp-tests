@@ -12,7 +12,7 @@ static const char *reg_name[33] = {
 };
 
 riscv32_CPU_state cpu;
-uint32_t memory[4096];
+uint32_t memory[MEM_SZ];
 extern IF2ID IF(uint32_t);
 extern ID2EX ID(IF2ID);
 extern EX2MEM EX(ID2EX);
