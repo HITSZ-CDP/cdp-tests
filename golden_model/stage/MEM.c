@@ -4,8 +4,10 @@ extern riscv32_CPU_state cpu;
 extern uint32_t memory[];
 uint32_t monitor_value_passed;
 uint32_t monitor_value_failed;
+uint32_t rw_peripherals(uint32_t waddr, uint32_t wdata, uint32_t isRead);
 #define PASSED_MONITOR_ADDR 0x80000000
 #define FAILED_MONITOR_ADDR 0x80000004
+// Peripheral
 
 #define MEM_LOAD_CASE_ENTRY(op, calc) case op: load_result = (calc); break
 #define MEM_STORE_CASE_ENTRY(op, calc) case op: store_val = (calc); is_store = 1; break
@@ -111,9 +113,13 @@ MEM2WB MEM(EX2MEM ex_info) {
             default: is_store = 0; is_signed = 0;
         }
         if(is_store) {
-            mem_store(ret.alu_out, mem_sz, ex_info.store_val);
+            if(rw_peripherals(ret.alu_out, ex_info.store_val, 0) == 0) {
+                mem_store(ret.alu_out, mem_sz, ex_info.store_val);
+            }
         } else {
-            ret.load_out = mem_load(ret.alu_out, mem_sz, is_signed);
+            if(rw_peripherals(ret.alu_out, ex_info.store_val, 1) == 0) {
+                ret.load_out = mem_load(ret.alu_out, mem_sz, is_signed);
+            }
         }
     }
     return ret;

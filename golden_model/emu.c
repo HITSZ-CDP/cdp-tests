@@ -13,6 +13,14 @@ static const char *reg_name[33] = {
 
 riscv32_CPU_state cpu;
 uint32_t memory[4096];
+typedef struct {
+    const char* name;
+    uint32_t base_addr;
+    uint32_t len;
+    uint32_t(*call_back)(uint32_t base_addr, uint32_t wdata, uint32_t isRead);
+} peripheral_descr;
+peripheral_descr peripherals[10]; // Should be changed if more peripherals are added
+uint32_t num_peripherals;
 extern IF2ID IF(uint32_t);
 extern ID2EX ID(IF2ID);
 extern EX2MEM EX(ID2EX);
@@ -36,6 +44,39 @@ void print_reg_state(){
     printf("\n");
 }
 
+uint32_t rw_led(uint32_t base_addr, uint32_t wdata, uint32_t isRead) {
+    static uint32_t current_state;
+    if(!isRead) {
+        current_state = wdata;
+        printf("Written to %8.8x with value %8.8x\n", base_addr, wdata);
+    }
+    return current_state;
+}
+
+void register_peripheral(const char *name, uint32_t base_addr, uint32_t len, uint32_t(*call_back)(uint32_t base_addr, uint32_t wdata, uint32_t isRead)){
+    color_print("Peripheral name: %s\tbase: 0x%8.8x\taddr len: 0x%8.8x\t", name, base_addr, len);
+    peripheral_descr new_peripheral;
+    new_peripheral.name = name;
+    new_peripheral.base_addr = base_addr;
+    new_peripheral.len = len;
+    new_peripheral.call_back = call_back;
+    peripherals[num_peripherals++] = new_peripheral;
+}
+
+uint32_t rw_peripherals(uint32_t waddr, uint32_t wdata, uint32_t isRead){
+    // Check if the address is in range of peripherals
+    // If yes, call the peripheral call_back function, and return 1
+    // Otherwise return 0;
+    for(int i = 0; i < num_peripherals; i++) {
+        if(waddr >= peripherals[i].base_addr && waddr <= peripherals[i].base_addr + peripherals[i].len) {
+            printf("Addr hit!");
+            peripherals[i].call_back(waddr, wdata, isRead);
+            return 1;
+        }
+    }
+    return 0;
+}
+
 void init_memory(const char *fname) {
     assert(fname != NULL);
     FILE *fp = fopen(fname, "rb");
@@ -51,5 +92,6 @@ void init_memory(const char *fname) {
 
 void init_cpu(const char *fname) {
     cpu.npc = 0;
+    register_peripheral("LED", 0x2000, 0xf, &rw_led);
     init_memory(fname);
 }
