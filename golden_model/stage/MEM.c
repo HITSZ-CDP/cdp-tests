@@ -20,6 +20,7 @@ uint32_t mem_load(uint32_t addr, AccessMode mode, uint32_t is_signed) {
     }
     
     // memory access
+    Assert(addr < MEM_SZ, "Memory access out of bound");
     uint32_t result;
     switch (mode) {
         case ACCESS_BYTE : 
@@ -58,6 +59,7 @@ void mem_store(uint32_t addr, AccessMode mode, uint32_t value) {
     }
     
     // memory access
+    Assert(addr < MEM_SZ, "Memory access out of bound");
     switch (mode) {
         case ACCESS_BYTE : 
             memory[index] = memory[index] & (~(0xFF << bit_off)) | ((value & 0xFF) << bit_off);
