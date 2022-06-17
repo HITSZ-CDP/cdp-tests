@@ -16,13 +16,13 @@ double sc_time_stamp() {
     return main_time;
 }
 void reset_all(){
-	printf("[mycpu] Resetting ...\n");
-	top_module -> rst_n = 0;
-	for(int i = 0; i<20; i++) {
-		top -> tick();
-	}
-	top_module -> rst_n = 1;
-	printf("[mycpu] Reset done.\n");
+    printf("[mycpu] Resetting ...\n");
+    top_module -> rst_n = 0;
+    for(int i = 0; i<20; i++) {
+        top -> tick();
+    }
+    top_module -> rst_n = 1;
+    printf("[mycpu] Reset done.\n");
 }
 
 void print_wb_info(WB_info i) {
@@ -56,15 +56,19 @@ int check(WB_info stu, WB_info ref) {
 }
 
 int main(int argc, char** argv, char** env) {
-	top = new TESTBENCH<Vtop>;
-    char dir[] = "waveform/";
-	top -> opentrace(strcat(dir, strcat(argv[1], ".vcd")));
+    top = new TESTBENCH<Vtop>;
+    char dir[1024] = "waveform/";
+    if(argc < 2 || strlen(argv[1]) > 1000) {
+        printf("Bad waveform dest path.");
+        exit(-1);
+    }
+    top -> opentrace(strcat(strcat(dir, argv[1]), ".vcd"));
     init_cpu(STR_MACRO(PATH));
-	top_module = top -> dut;
+    top_module = top -> dut;
 
-	reset_all();
+    reset_all();
 
-	printf("[difftest] Test Start!\n");
+    printf("[difftest] Test Start!\n");
     WB_info rtl_wb_info, model_wb_info;
     for(int i = 0; i < 1000000; i++) {
         rtl_wb_info = top -> tick();
@@ -75,6 +79,6 @@ int main(int argc, char** argv, char** env) {
         }
     }
     printf("Timed out! Please check whether your CPU got stuck.\n");
-	delete top;
-	return 0;
+    delete top;
+    return 0;
 }
