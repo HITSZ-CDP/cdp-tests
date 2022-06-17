@@ -1,5 +1,5 @@
 VSRC = $(wildcard vsrc/* mycpu/*) 
-CSRC = $(wildcard golden_model/*.c) $(wildcard golden_model/stage/*.c) $(wildcard csrc/*.c csrc/*.cpp)
+CSRC = $(wildcard golden_model/*.c) $(wildcard golden_model/stage/*.c) $(wildcard golden_model/peripheral/*.c) $(wildcard csrc/*.c csrc/*.cpp)
 SIM_OPTS = --trace -Wno-lint -Wno-style -Wno-TIMESCALEMOD
 TEST = addi
 TESTFILE = meminit.bin

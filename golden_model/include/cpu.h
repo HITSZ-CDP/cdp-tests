@@ -1,9 +1,29 @@
 #ifndef __CPU__
 #define __CPU__
 #include <stdint.h>
+#include <stdbool.h>
 #include "debug.h"
 #define MEM_PADDR_BITS 16
 #define MEM_SZ (1 << MEM_PADDR_BITS)
+#define MAX_PERIPHERAL 16
+
+typedef enum{
+    ACCESS_WORD,
+    ACCESS_HWORD,
+    ACCESS_BYTE
+} AccessMode;
+
+typedef uint32_t(*PeripheralRCallback)(uint32_t rel_addr, AccessMode mode);
+typedef void(*PeripheralWCallback)(uint32_t rel_addr, AccessMode mode, uint32_t data);
+
+typedef struct {
+    const char* name;
+    uint32_t base_addr;
+    uint32_t len;
+    PeripheralRCallback callback_r;
+    PeripheralWCallback callback_w;
+} peripheral_descr;
+
 typedef struct {
   uint32_t gpr[32]; 
   uint32_t pc;

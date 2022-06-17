@@ -3,6 +3,8 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include <stdio.h>
+#include "peripheral/result_monitor.h"
+#include "peripheral/onboard.h"
 static const char *reg_name[33] = {
   "$0", "ra", "sp", "gp", "tp", "t0", "t1", "t2",
   "s0", "s1", "a0", "a1", "a2", "a3", "a4", "a5",
@@ -12,15 +14,9 @@ static const char *reg_name[33] = {
 };
 
 riscv32_CPU_state cpu;
-typedef struct {
-    const char* name;
-    uint32_t base_addr;
-    uint32_t len;
-    uint32_t(*call_back)(uint32_t base_addr, uint32_t wdata, uint32_t isRead);
-} peripheral_descr;
-peripheral_descr peripherals[10]; // Should be changed if more peripherals are added
-uint32_t num_peripherals;
-uint32_t memory[MEM_SZ];
+peripheral_descr peripherals[MAX_PERIPHERAL];
+uint32_t num_peripherals = 0;
+uint32_t memory[MEM_SZ / sizeof(uint32_t)];
 
 extern IF2ID IF(uint32_t);
 extern ID2EX ID(IF2ID);
@@ -45,37 +41,29 @@ void print_reg_state(){
     printf("\n");
 }
 
-uint32_t rw_led(uint32_t base_addr, uint32_t wdata, uint32_t isRead) {
-    static uint32_t current_state;
-    if(!isRead) {
-        current_state = wdata;
-        printf("Written to %8.8x with value %8.8x\n", base_addr, wdata);
-    }
-    return current_state;
-}
-
-void register_peripheral(const char *name, uint32_t base_addr, uint32_t len, uint32_t(*call_back)(uint32_t base_addr, uint32_t wdata, uint32_t isRead)){
-    color_print("Peripheral name: %s\tbase: 0x%8.8x\taddr len: 0x%8.8x\t\n", name, base_addr, len);
+void register_peripheral(const char *name, uint32_t base_addr, uint32_t len, PeripheralRCallback callback_r, PeripheralWCallback callback_w){
+    color_print("Peripheral name: %s\tbase: 0x%8.8x\taddr len: 0x%8.8x\t\n", name, base_addr, len); 
     peripheral_descr new_peripheral;
     new_peripheral.name = name;
     new_peripheral.base_addr = base_addr;
     new_peripheral.len = len;
-    new_peripheral.call_back = call_back;
+    new_peripheral.callback_r = callback_r;
+    new_peripheral.callback_w = callback_w;
+    Assert(num_peripherals < MAX_PERIPHERAL, "Too many peripherals.\n");
     peripherals[num_peripherals++] = new_peripheral;
 }
 
-uint32_t rw_peripherals(uint32_t waddr, uint32_t wdata, uint32_t isRead){
+bool is_peripheral(uint32_t addr, size_t* id){
     // Check if the address is in range of peripherals
-    // If yes, call the peripheral call_back function, and return 1
-    // Otherwise return 0;
+    // If yes, return id
+    // Otherwise return -1
     for(int i = 0; i < num_peripherals; i++) {
-        if(waddr >= peripherals[i].base_addr && waddr <= peripherals[i].base_addr + peripherals[i].len) {
-            printf("Addr hit!");
-            peripherals[i].call_back(waddr, wdata, isRead);
-            return 1;
+        if(addr >= peripherals[i].base_addr && addr <= peripherals[i].base_addr + peripherals[i].len) {
+            *id = i;
+            return true;
         }
     }
-    return 0;
+    return false;
 }
 
 void init_memory(const char *fname) {
@@ -93,6 +81,6 @@ void init_memory(const char *fname) {
 
 void init_cpu(const char *fname) {
     cpu.npc = 0;
-    register_peripheral("LED", 0x2000, 0xf, &rw_led);
+    register_peripheral("MONITOR", 0x80000000, 0x8, &read_monitor, &write_monitor);
     init_memory(fname);
 }
