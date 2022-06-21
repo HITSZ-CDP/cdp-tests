@@ -1,2 +1,4 @@
 obj_dir
 waveform
+mycpu/*
+meminit.bin

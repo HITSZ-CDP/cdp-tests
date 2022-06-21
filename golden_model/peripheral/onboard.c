@@ -1,11 +1,15 @@
 #include "onboard.h"
 
+uint32_t digit_value;
+
 uint32_t read_seven_seg(uint32_t rel_addr, AccessMode mode)  {
-    panic("TODO");
+    panic("7-segment display cannot be read.");
 }
 
 void write_seven_seg(uint32_t rel_addr, AccessMode mode, uint32_t data)  {
-    panic("TODO");
+    Assert(mode == ACCESS_WORD && rel_addr == 0, "Access violation");
+    digit_value = data;
+    printf("Digit: 0x%x\n", digit_value);
 }
 
 uint32_t read_keyboard(uint32_t rel_addr, AccessMode mode)  {
