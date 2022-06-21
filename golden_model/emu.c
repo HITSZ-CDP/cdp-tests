@@ -83,6 +83,6 @@ void init_memory(const char *fname) {
 void init_cpu(const char *fname) {
     cpu.npc = 0;
     register_peripheral("MONITOR", 0x80000000, 0x8, read_monitor, write_monitor);
-    register_peripheral("Digit", 0xFFFFF000, 0x1, read_seven_seg, write_seven_seg);
+    register_peripheral("Digit", 0xFFFFF000, 0x4, read_seven_seg, write_seven_seg);
     init_memory(fname);
 }
