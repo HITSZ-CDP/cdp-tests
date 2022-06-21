@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include "peripheral/result_monitor.h"
 #include "peripheral/onboard.h"
+
 static const char *reg_name[33] = {
   "$0", "ra", "sp", "gp", "tp", "t0", "t1", "t2",
   "s0", "s1", "a0", "a1", "a2", "a3", "a4", "a5",
@@ -81,6 +82,7 @@ void init_memory(const char *fname) {
 
 void init_cpu(const char *fname) {
     cpu.npc = 0;
-    register_peripheral("MONITOR", 0x80000000, 0x8, &read_monitor, &write_monitor);
+    register_peripheral("MONITOR", 0x80000000, 0x8, read_monitor, write_monitor);
+    register_peripheral("Digit", 0xFFFFF000, 0x1, read_seven_seg, write_seven_seg);
     init_memory(fname);
 }
